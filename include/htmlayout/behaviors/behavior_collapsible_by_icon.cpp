@@ -40,7 +40,7 @@ struct collapsible_by_icon: public behavior
       bool is_closed = false;
       const wchar_t* pv = el.get_attribute("state");
       if(pv)
-        is_closed = wcsicmp(pv,L"close") == 0; 
+        is_closed = _wcsicmp(pv,L"close") == 0; 
 
       // toggle value of attribute "state" and 
       // correspondent state flag - this is needed to play animation
