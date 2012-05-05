@@ -14,27 +14,33 @@
     <div #maincontent>
         <div #thebar>
 		    <li id="section1" default>
-			    <p class="caption">Section #1</p>
+			    <p class="caption">General info</p>
 			    <div class="content">
-				    Some content here...
+				    General information about this replay, and a table with ending items
 			    </div>
 		    </li>
-		    <li id="section2">
-			    <p class="caption">Section #2</p>
+            <li id="section2">
+			    <p class="caption">K/D/A / CK/CD stats</p>
 			    <div class="content">
-				    Some content here...
+				    A table that contains: hero kills/deaths/assists and creeps (killed/denied) stats
 			    </div>
 		    </li>
 		    <li id="section3">
-			    <p class="caption">Section #3</p>
+			    <p class="caption">Experience graph</p>
 			    <div class="content">
-				    Some content here...
+				    Experience graphs, by player/team
 			    </div>
 		    </li>
 		    <li id="section4">
-			    <p class="caption">Section #4</p>
+			    <p class="caption">Gold graph</p>
 			    <div class="content">
-				    Some content here...
+				    Gold graphs, by player/team
+			    </div>
+		    </li>
+		    <li id="section5">
+			    <p class="caption">Export</p>
+			    <div class="content">
+				    Export replay into into another format
 			    </div>
 		    </li>
 	    </div>
@@ -44,7 +50,17 @@
             <div for="section2">Section #2 selected</div>
             <div for="section3">Section #3 selected</div>
             <div for="section4">Section #4 selected</div>
+            <div for="section5">Section #5 selected</div>
 	    </div>
     </div>
+
+    <form.light-box-dialog #test>
+        <button #choose-a-file>Choose a replay to parse...</button>
+        <br />
+        Parsing progress: <input #parsing-progress type="progress" maxvalue="100" value="0" style="margin-top:100px; width: 100%%";/>
+        <p .button-bar>
+            <button role="ok-button">OK</button>
+        </p>
+    </form>
 </body>
 </html>

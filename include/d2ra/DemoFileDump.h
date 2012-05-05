@@ -2,6 +2,7 @@
 
 #include "common.h"
 #include "DemoFile.h"
+#include "export_types.h"
 
 #include <Windows.h>
 
@@ -26,8 +27,8 @@ private:
 	template <class DEMCLASS>
 	void HandleMessage( bool compressed, int tick, int& size, int& uncompressedSize );
 
-	//template <>
-	//void HandleMessage<CDemoFullPacket_t>( bool compressed, int tick, int& size, int& uncompressedSize );
+	template <>
+	void HandleMessage<CDemoFileHeader_t>( bool compressed, int tick, int& size, int& uncompressedSize );
 
 	//template <>
 	//void PrintDemoMessage<CDemoStringTables_t>( bool compressed, int tick, int& size, int& uncompressedSize );
@@ -41,4 +42,11 @@ private:
 	int _previouspercent;
 
 	HANDLE _parsingthread;
+
+private:
+	D2GENERAL_INFORMATION _generalInformation;
+
+
+public:
+	void GetGeneralInformation( PD2GENERAL_INFORMATION generalInformation );
 };

@@ -73,7 +73,8 @@ struct lb_dialog_instance: public event_handler //behavior
 #endif
 
       dom::element focus = dom::element::element_by_uid( root.get_element_hwnd(true), focus_uid );
-                   focus.set_state(STATE_FOCUS);
+	  if (focus.is_valid())
+		focus.set_state(STATE_FOCUS);
 
       saved_parent = 0;
       saved_index = 0;

@@ -53,6 +53,9 @@
     <ClInclude Include="..\..\.generated\usermessages.pb.h">
       <Filter>proto\.generated</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\include\d2ra\export_types.h">
+      <Filter>exports</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="exports.cpp">

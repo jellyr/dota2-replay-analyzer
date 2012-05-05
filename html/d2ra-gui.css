@@ -9,6 +9,9 @@ body
 	margin: 0;
 	border: 1px solid red;
 	behavior: drag-window;
+	
+	assigned!:
+	    $1( form.light-box-dialog ).show( );
 }
 
 #maincontent
@@ -95,4 +98,33 @@ body
 #thebar > li:expanded > .content 
 {
 	visibility:visible;
+}
+
+form.light-box-dialog
+{
+    behavior: light-box-dialog;
+    display: none;
+    width: 50%;
+    height: 50%;
+    margin: *;
+    background: url( images/dialog-back.png ) expand;
+    background-position: 26 26 26 26;
+    padding: 28px;
+}
+div.shim
+{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba( 0, 0, 0, 0.5 );
+}
+p.button-bar
+{
+    margin-bottom: 0;
+    margin-top: *;
+    border-top: 1px solid #444;
+    padding: 4px;
+    text-align: right;
 }

@@ -101,6 +101,7 @@
     <ClInclude Include="..\..\include\d2ra\DemoFile.h" />
     <ClInclude Include="..\..\include\d2ra\DemoFileDump.h" />
     <ClInclude Include="..\..\include\d2ra\exports.h" />
+    <ClInclude Include="..\..\include\d2ra\export_types.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\.generated\ai_activity.pb.cc" />

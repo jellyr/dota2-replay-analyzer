@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "d2ra", "src\d2ra\d2ra.vcxproj", "{02287658-3591-4201-ADD4-A85369F18ADA}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "d2ra-gui", "src\d2ra-gui\d2ra-gui.vcxproj", "{6E49D74C-0D0F-476D-A60F-FCF64D2A929B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{02287658-3591-4201-ADD4-A85369F18ADA} = {02287658-3591-4201-ADD4-A85369F18ADA}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

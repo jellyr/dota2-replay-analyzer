@@ -1,9 +1,13 @@
 #include "Window.h"
 #include <Shlwapi.h>
+#include <CommDlg.h>
+
+using namespace htmlayout;
 
 Window::Window( )
-	: _hwnd( nullptr )
-	, htmlayout::event_handler( HANDLE_ALL )
+	: event_handler( HANDLE_BEHAVIOR_EVENT )
+	, _hwnd( nullptr )
+	, _root( nullptr )
 {
 	_classname = _wcsdup( L"dota2.replay.analyzer" );
 }
@@ -51,6 +55,13 @@ bool Window::Register( )
 
 LRESULT CALLBACK Window::WndProc( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam )
 {
+	Window *w = ( Window* ) GetWindowLongPtr( hWnd, GWLP_USERDATA );
+
+	if ( msg == WM_D2_SET_PROGRESS )
+	{
+		w->SetProgress( ( int ) wParam );
+	}
+
 	BOOL handled = FALSE;
 	LRESULT result = 0;
 	result = HTMLayoutProcND( hWnd, msg, wParam, lParam, &handled );
@@ -184,4 +195,122 @@ void Window::OnCreate( )
 void Window::OnDestroy( )
 {
 	detach_event_handler( _hwnd, this );
+}
+
+htmlayout::dom::root_element* Window::Root( )
+{
+	if ( _root == nullptr )
+	{
+		_root = new htmlayout::dom::root_element( _hwnd );
+	}
+
+	return _root;
+}
+
+BOOL Window::handle_event ( HELEMENT he, BEHAVIOR_EVENT_PARAMS& params )
+{
+	if ( params.cmd == BUTTON_CLICK || params.cmd == HYPERLINK_CLICK )
+	{
+		return HandleClick( he );
+	}
+
+	return FALSE;
+}
+
+BOOL Window::HandleClick( HELEMENT he )
+{
+	dom::element element = he;
+	const wchar_t* id = element.get_attribute( "id" );
+
+	if ( ! id || ! id[0] )
+	{
+		return FALSE;
+	}
+
+#define HANDLE_ID_METHOD( x, y ) \
+	if ( ! wcscmp( id, x ) ) \
+	{										\
+		y( );				\
+		return TRUE;						\
+	}
+
+	HANDLE_ID_METHOD( L"choose-a-file", OnClickedLoadDemo );
+
+
+#undef HANDLE_ID_METHOD
+
+	return FALSE;
+}
+
+HWND Window::GetHwnd( )
+{
+	return _hwnd;
+}
+
+void ProgressCallback( void* context, int percent )
+{
+	if ( context )
+	{
+		Window *w = ( Window* ) context;
+		PostMessage( w->GetHwnd( ), WM_D2_SET_PROGRESS, percent, 0 );
+	}
+}
+
+void Window::OnClickedLoadDemo( )
+{
+	wchar_t selectedFile[MAX_PATH];
+	ZeroMemory( selectedFile, sizeof( selectedFile ) );
+
+	OPENFILENAME ofn;
+	ZeroMemory( &ofn, sizeof( ofn ) );
+	ofn.lStructSize = sizeof( OPENFILENAME );
+	ofn.hwndOwner = _hwnd;
+	ofn.lpstrFilter = L"Dota2 replays (*.dem)\0*.dem\0\0";
+	ofn.nFilterIndex = 1;
+	ofn.lpstrTitle = L"Open replay";
+	ofn.Flags = OFN_EXPLORER | OFN_FILEMUSTEXIST | OFN_LONGNAMES | OFN_NOCHANGEDIR | OFN_NONETWORKBUTTON | OFN_PATHMUSTEXIST;
+
+	ofn.lpstrFile = selectedFile;
+	ofn.nMaxFile = MAX_PATH - 1;
+
+	if ( ! GetOpenFileName( &ofn ) )
+	{
+		DWORD dw = CommDlgExtendedError();
+		dw = 1;
+	}
+
+	D2Close( );
+
+	if ( ! D2Open( selectedFile ) )
+	{
+		MessageBox( _hwnd, L"Cannot open that file.", L"Dota 2", MB_ICONERROR|MB_OK );
+	}
+
+	if ( MessageBox( _hwnd, L"Do you want to begin parsing the file?", L"Dota 2", MB_ICONQUESTION|MB_OKCANCEL ) == IDOK )
+	{
+		D2SetProgressCallback( ProgressCallback, this );
+		D2Parse( );
+	}
+
+	return;
+}
+
+void Window::SetProgress( int percent )
+{
+	dom::element progress = Root( )->find_first( "#parsing-progress" );
+
+	wchar_t value[5] = { 0 };
+	_itow_s( percent, value, 10 );
+
+	progress.set_attribute( "value", value );
+	progress.update(REDRAW_NOW);
+
+	if ( percent == 100 )
+	{
+		dom::element overlay = Root( )->find_first( "form.light-box-dialog" );
+		overlay.xcall( "hide" );
+
+		D2GENERAL_INFORMATION generalInfo;
+		D2GetGeneralInformation( &generalInfo );
+	}
 }

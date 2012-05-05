@@ -25,6 +25,11 @@ void NewDemoFileDump::Close( )
 	_demofile.Close( );
 }
 
+void NewDemoFileDump::GetGeneralInformation( PD2GENERAL_INFORMATION generalInformation )
+{
+	memcpy_s( generalInformation, sizeof( *generalInformation ), &_generalInformation, sizeof( _generalInformation ) );
+}
+
 DWORD WINAPI NewDemoFileDump::ParsingThreadProc( LPVOID param )
 {
 	if ( param )
@@ -224,14 +229,16 @@ void NewDemoFileDump::HandleMessage( bool compressed, int tick, int& size, int& 
 //}
 //
 
-//template <>
-//void NewDemoFileDump::HandleMessage<CDemoFullPacket_t>( bool compressed, int tick, int& size, int& uncompressedSize )
-//{
-//	CDemoFullPacket_t Msg;
-//	_demofile.ReadMessage( &Msg, compressed, &size, &uncompressedSize );
-//
-//	Msg.GetProtoMsg( ).PrintDebugString( );
-//}
+template <>
+void NewDemoFileDump::HandleMessage<CDemoFileHeader_t>( bool compressed, int tick, int& size, int& uncompressedSize )
+{
+	CDemoFileHeader_t Msg;
+	_demofile.ReadMessage( &Msg, compressed, &size, &uncompressedSize );
+
+	strcpy_s( _generalInformation.serverName, Msg.server_name( ).c_str( ) );
+	_generalInformation.networkProtocol = Msg.network_protocol( );
+	_generalInformation.allowClientsideEntities = Msg.allow_clientside_entities( );
+}
 
 void NewDemoFileDump::SetProgressCallback( PROGRESS_CALLBACK callback, void* context )
 {

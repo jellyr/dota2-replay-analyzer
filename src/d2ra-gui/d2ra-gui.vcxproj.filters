@@ -8,6 +8,7 @@
     <ClInclude Include="..\..\include\htmlayout\behaviors\notifications.h">
       <Filter>_htmlayout</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\include\d2ra-gui\HtmlEventHandler.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp" />
