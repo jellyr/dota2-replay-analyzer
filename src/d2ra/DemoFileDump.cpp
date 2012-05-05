@@ -10,6 +10,7 @@ NewDemoFileDump::NewDemoFileDump( )
 	, _parsingthread( nullptr )
 {
 	ZeroMemory( &_generalInformation, sizeof( _generalInformation ) );
+	ZeroMemory( &_playerInformation, sizeof( _playerInformation ) );
 }
 
 NewDemoFileDump::~NewDemoFileDump( )
@@ -29,6 +30,11 @@ void NewDemoFileDump::Close( )
 void NewDemoFileDump::GetGeneralInformation( PD2GENERAL_INFORMATION generalInformation )
 {
 	memcpy_s( generalInformation, sizeof( *generalInformation ), &_generalInformation, sizeof( _generalInformation ) );
+}
+
+void NewDemoFileDump::GetPlayerInformation( PD2PLAYER_INFORMATION playerInformation )
+{
+	memcpy_s( playerInformation, sizeof( *playerInformation ), &_playerInformation, sizeof( _playerInformation ) );
 }
 
 DWORD WINAPI NewDemoFileDump::ParsingThreadProc( LPVOID param )
@@ -195,6 +201,12 @@ void NewDemoFileDump::HandleMessage<CDemoFileInfo_t>( bool compressed, int tick,
 
 	std::string str = Msg.GetProtoMsg( ).DebugString( );
 	OutputDebugStringA( str.c_str( ) );
+	
+	for ( int i = 0; i < _countof( _playerInformation.players ); i++ )
+	{
+		strcpy_s( _playerInformation.players[i].name, Msg.game_info( ).dota( ).player_info( i ).player_name( ).c_str( ) );
+		strcpy_s( _playerInformation.players[i].hero, Msg.game_info( ).dota( ).player_info( i ).hero_name( ).c_str( ) + 14 );
+	}
 }
 
 void NewDemoFileDump::SetProgressCallback( PROGRESS_CALLBACK callback, void* context )

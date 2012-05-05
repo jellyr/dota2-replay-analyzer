@@ -39,6 +39,9 @@ void D2RA_API D2SetStoppedCallback( D2RA_STOPPED_CALLBACK callback, void* contex
 // Get general information from the replay
 void D2RA_API D2GetGeneralInformation( PD2GENERAL_INFORMATION generalInfo );
 
+// Get information about players
+void D2RA_API D2GetPlayerInformation( PD2PLAYER_INFORMATION playerInfo );
+
 #ifdef __cplusplus
 }
 #endif

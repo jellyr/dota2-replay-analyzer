@@ -32,3 +32,8 @@ void D2RA_API D2GetGeneralInformation( PD2GENERAL_INFORMATION generalInfo )
 {
 	fileDump.GetGeneralInformation( generalInfo );
 }
+
+void D2RA_API D2GetPlayerInformation( PD2PLAYER_INFORMATION playerInfo )
+{
+	fileDump.GetPlayerInformation( playerInfo );
+}

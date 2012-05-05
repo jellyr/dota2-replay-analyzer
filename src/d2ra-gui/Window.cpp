@@ -293,6 +293,9 @@ void Window::OnClickedLoadDemo( )
 		MessageBox( _hwnd, L"Cannot open that file.", L"Dota 2", MB_ICONERROR|MB_OK );
 	}
 
+	dom::element selected = Root( )->find_first( "#chosen-file-name" );
+	selected.set_text( selectedFile );
+
 	D2SetProgressCallback( ProgressCallback, this );
 	D2Parse( );
 	
@@ -372,4 +375,36 @@ void Window::OnFinishedParsing( )
 		elem = Root( )->find_first( "#general-duration" );
 		elem.set_text( ToWchar( generalInfo.duration ).c_str( ) );
 	}
+
+	D2PLAYER_INFORMATION playerInfo;
+	D2GetPlayerInformation( &playerInfo );
+
+	{
+		elem = Root( )->find_first( "div[for=\"section1\"]" );
+
+		for ( int i = 0; i < _countof( playerInfo.players ); i++ )
+		{
+			char playernr[25] = { 0 };
+			sprintf_s( playernr, "tr[player=\"%d\"]", i );
+
+			dom::element tr = elem.find_first( playernr );
+			
+			dom::element img = tr.find_first( "img" );
+			std::wstring src = L"images/heroes/";
+			src += ToWchar( playerInfo.players[i].hero ).c_str( );
+			src += L".png";
+			img.set_attribute( "src", src.c_str( ) );
+			img.set_attribute( "width", L"42px" );
+			img.set_attribute( "height", L"24px" );
+
+			dom::element txt = tr.find_first( "div" );
+			txt.set_text( ToWchar( playerInfo.players[i].name ).c_str( ) );
+		}
+	}
+
+	/*dom::element r = Root( )->find_first( "body" );
+	json::astring html = r.get_html( );
+	OutputDebugStringA( html.c_str( ) );
+*/
+	int a = 1;
 }

@@ -79,6 +79,48 @@
                         <td #general-duration>–</td>
                     </tr>
                 </table>
+
+                <table style="margin-top: 20px;">
+                    <tr colspan="2">
+	                    <td>The Radiant</td>
+                    </tr>
+                    <tr player="0">
+	                    <td><img width="42px" height="24px" /></td><td><div></div></td>
+                    </tr>
+                    <tr player="1">
+	                    <td><img width="42px" height="24px" /></td><td><div></div></td>
+                    </tr>
+                    <tr player="2">
+	                    <td><img width="42px" height="24px" /></td><td><div></div></td>
+                    </tr>
+                    <tr player="3">
+	                    <td><img width="42px" height="24px" /></td><td><div></div></td>
+                    </tr>
+                    <tr player="4">
+	                    <td><img width="42px" height="24px" /></td><td><div></div></td>
+                    </tr>
+                    <tr colspan="2">
+	                    <td>The Dire</td>
+                    </tr>
+                    <tr player="5">
+	                    <td><img width="42px" height="24px" /></td><td><div></div></td>
+                    </tr>
+                    <tr player="6">
+	                    <td><img width="42px" height="24px" /></td><td><div></div></td>
+                    </tr>
+                    <tr player="7">
+	                    <td><img width="42px" height="24px" /></td><td><div></div></td>
+                    </tr>
+                    <tr player="8">
+	                    <td><img width="42px" height="24px" /></td><td><div></div></td>
+                    </tr>
+                    <tr player="9">
+	                    <td><img width="42px" height="24px" /></td><td><div></div></td>
+                    </tr>
+                    <tr player="10">
+	                    <td><img width="42px" height="24px" /></td><td><div></div></td>
+                    </tr>
+                </table>
             </div>
             <div for="section2">Section #2 selected</div>
             <div for="section3">Section #3 selected</div>
@@ -89,11 +131,11 @@
 
     <form.light-box-dialog #test>
         <button #choose-a-file>Choose a replay to parse...</button>
-        <br />
-        Parsing progress: <input #parsing-progress type="progress" maxvalue="100" value="0" style="margin-top:100px; width: 100%%";/>
-        <p .button-bar>
-            <button role="ok-button">OK</button>
-        </p>
+        <br /><br />
+        Chosen file: <span #chosen-file-name style="text-overflow:ellipsis;">none</span>
+        <div style="margin-top:100px; width: 100%%;">
+            Parsing progress: <input #parsing-progress type="progress" maxvalue="100" value="0" style="width: 100%%;"/>
+        </div>
     </form>
 </body>
 </html>

@@ -2,6 +2,7 @@
 
 #include <string>
 #include <assert.h>
+#include "export_types.h"
 #include "demo.pb.h"
 #include "netmessages.pb.h"
 
@@ -20,7 +21,6 @@ public:
 	int32 fileinfo_offset;
 };
 
-#define MAX_PLAYER_NAME_LENGTH	32
 #define MAX_CUSTOM_FILES		4	// max 4 files
 #define SIGNED_GUID_LEN			32	// Hashed CD Key (32 hex alphabetic chars + 0 terminator )
 

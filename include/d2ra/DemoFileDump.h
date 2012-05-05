@@ -45,8 +45,9 @@ private:
 
 private:
 	D2GENERAL_INFORMATION _generalInformation;
-
+	D2PLAYER_INFORMATION _playerInformation;
 
 public:
 	void GetGeneralInformation( PD2GENERAL_INFORMATION generalInformation );
+	void GetPlayerInformation( PD2PLAYER_INFORMATION playerInformation );
 };

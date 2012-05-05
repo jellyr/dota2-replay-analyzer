@@ -8,6 +8,8 @@ extern "C"
 #define MAX_SERVERNAME_LENGTH	200
 #define MAX_GAME_WINNER_LENGTH	40
 #define MAX_GAME_MODE_LENGTH	40
+#define MAX_PLAYER_NAME_LENGTH	32		// this was in demofile.h in the original code
+#define MAX_HERO_NAME_LENGTH	40
 
 // TODO: Make sure these are ok
 #define GAME_WINNER_RADIANT		2
@@ -33,6 +35,17 @@ typedef struct
 	float duration;								// how long it takes, in seconds
 } D2GENERAL_INFORMATION, *PD2GENERAL_INFORMATION;
 
+
+typedef struct
+{
+	char name[MAX_PLAYER_NAME_LENGTH];			// "Lamza"
+	char hero[MAX_HERO_NAME_LENGTH];			// "npc_dota_hero_earthshaker"
+} __PLAYER_INFORMATION;
+
+typedef struct
+{
+	__PLAYER_INFORMATION players[10];				// 10 players
+} D2PLAYER_INFORMATION, *PD2PLAYER_INFORMATION;
 
 #ifdef __cplusplus
 }
