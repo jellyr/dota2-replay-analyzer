@@ -1,38 +1,50 @@
 <html>
 <head>
-<style type="text/css"> 
+
+<style type="text/css">
 @import url( d2ra-gui.css );
 </style>
 </head>
+
 <body>
-	<h3>Dota 2 Replay Analizer</h3>
-	<div id="thebar">
-		<li default>
-			<p class="caption">Section #1</p>
-			<div class="content">
-				Some content here...
-			</div>
-		</li>
-		<li>
-			<p class="caption">Section #2</p>
-			<div class="content">
-				Some content here...
-			</div>
-		</li>
-		<li>
-			<p class="caption">Section #3</p>
-			<div class="content">
-				Some content here...
-			</div>
-		</li>
-		<li>
-			<p class="caption">Section #4</p>
-			<div class="content">
-				Some content here...
-			</div>
-		</li>
-	</ul>
-	<div>
-	</div>
+    <div #top style="width:100%%; height: 20px; font-size: 20pt; font-weight: bolder; text-align:center;">
+        Dota 2 Replay Analyzer
+    </div>
+
+    <div #maincontent>
+        <div #thebar>
+		    <li id="section1" default>
+			    <p class="caption">Section #1</p>
+			    <div class="content">
+				    Some content here...
+			    </div>
+		    </li>
+		    <li id="section2">
+			    <p class="caption">Section #2</p>
+			    <div class="content">
+				    Some content here...
+			    </div>
+		    </li>
+		    <li id="section3">
+			    <p class="caption">Section #3</p>
+			    <div class="content">
+				    Some content here...
+			    </div>
+		    </li>
+		    <li id="section4">
+			    <p class="caption">Section #4</p>
+			    <div class="content">
+				    Some content here...
+			    </div>
+		    </li>
+	    </div>
+
+	    <div #right>
+            <div for="section1">Section #1 selected</div>
+            <div for="section2">Section #2 selected</div>
+            <div for="section3">Section #3 selected</div>
+            <div for="section4">Section #4 selected</div>
+	    </div>
+    </div>
 </body>
 </html>

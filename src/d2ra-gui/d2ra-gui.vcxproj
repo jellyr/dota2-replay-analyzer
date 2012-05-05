@@ -44,12 +44,31 @@
     <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_tabs.cpp" />
     <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_virtual_grid.cpp" />
     <ClCompile Include="..\..\include\htmlayout\behaviors\data_source_behavior.cpp" />
+    <ClCompile Include="behaviors\drag_window.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\html\d2ra-gui.css" />
-    <None Include="..\..\html\index.html" />
+    <CustomBuild Include="..\..\html\d2ra-gui.css">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">if not exist $(SolutionDir)bin\$(Configuration)\html mkdir $(SolutionDir)bin\$(Configuration)\html
+xcopy /C /F /R /Y /E /D $(SolutionDir)html\* $(SolutionDir)bin\$(Configuration)\html
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)bin\$(Configuration)\html\%(FileName).%(Extension)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">if not exist $(SolutionDir)bin\$(Configuration)\html mkdir $(SolutionDir)bin\$(Configuration)\html
+xcopy /C /F /R /Y /E /D $(SolutionDir)html\* $(SolutionDir)bin\$(Configuration)\html
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)bin\$(Configuration)\html\%(FileName).%(Extension)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\..\html\index.html">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">if not exist $(SolutionDir)bin\$(Configuration)\html mkdir $(SolutionDir)bin\$(Configuration)\html
+xcopy /C /F /R /Y /E /D $(SolutionDir)html\* $(SolutionDir)bin\$(Configuration)\html
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">if not exist $(SolutionDir)bin\$(Configuration)\html mkdir $(SolutionDir)bin\$(Configuration)\html
+xcopy /C /F /R /Y /E /D $(SolutionDir)html\* $(SolutionDir)bin\$(Configuration)\html
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)bin\$(Configuration)\html\%(FileName).%(Extension)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)bin\$(Configuration)\html\%(FileName).%(Extension)</Outputs>
+    </CustomBuild>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{6E49D74C-0D0F-476D-A60F-FCF64D2A929B}</ProjectGuid>
@@ -96,7 +115,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;_DEBUG;_WINDOWS;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;_CRT_NON_CONFORMING_SWPRINTFS;_DEBUG;_WINDOWS;%(PreprocessorDefinitions);%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)include\d2ra-gui;$(SolutionDir)include\htmlayout;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -106,10 +125,10 @@
       <AdditionalDependencies>htmlayout.lib;shlwapi.lib;Comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>if not exist $(SolutionDir)bin\$(Configuration)\html mkdir $(SolutionDir)bin\$(Configuration)\html
-xcopy /C /F /R /Y /E $(SolutionDir)html\* $(SolutionDir)bin\$(Configuration)\html
-</Command>
-      <Message>Copying html resources...</Message>
+      <Command>
+      </Command>
+      <Message>
+      </Message>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -120,7 +139,7 @@ xcopy /C /F /R /Y /E $(SolutionDir)html\* $(SolutionDir)bin\$(Configuration)\htm
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;NDEBUG;_WINDOWS;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;_CRT_NON_CONFORMING_SWPRINTFS;NDEBUG;_WINDOWS;%(PreprocessorDefinitions);%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)include\d2ra-gui;$(SolutionDir)include\htmlayout;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -132,10 +151,10 @@ xcopy /C /F /R /Y /E $(SolutionDir)html\* $(SolutionDir)bin\$(Configuration)\htm
       <AdditionalDependencies>htmlayout.lib;shlwapi.lib;Comctl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>if not exist $(SolutionDir)bin\$(Configuration)\html mkdir $(SolutionDir)bin\$(Configuration)\html
-xcopy /C /F /R /Y /E $(SolutionDir)html\* $(SolutionDir)bin\$(Configuration)\html
-</Command>
-      <Message>Copying html resources...</Message>
+      <Command>
+      </Command>
+      <Message>
+      </Message>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

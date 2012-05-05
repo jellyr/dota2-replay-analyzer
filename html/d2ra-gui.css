@@ -1,21 +1,27 @@
 body
 {
 	font-family: "Tahoma";
-	font-size: 10pt; 
-	padding: 10px;
+	font-size: 10pt;
+	padding: 0;
 	background-color: #e9e8f3;
 	width: 1000px;
 	height: 600px;
 	margin: 0;
-	padding: 10px;
 	border: 1px solid red;
+	behavior: drag-window;
+}
+
+#maincontent
+{
+    flow: horizontal;
+    height: 100%%;
 }
 
 #thebar 
 {
 	overflow: auto;
 	height: 100%%;
-	width: 200px;
+	width: 30%%;
 	margin: 0;
 	padding: 0;
 	border: 1px solid #bdbccc;
@@ -23,6 +29,15 @@ body
 	behavior: expandable-list;
 	overflow-y: hidden;
 	background-color: #fff #e9e8f3 #e9e8f3 #fff;
+}
+
+#right
+{
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    height: 100%%;
+    margin-left: 10px;
+    padding: 10px;
 }
 
 #thebar > li 
@@ -54,6 +69,19 @@ body
 #thebar > li:expanded
 {
 	height: 100%%;
+	assigned!:
+        $( #right > div ).show = null,
+        $( #right > div:nth-child( <self:index> ) ).show = true;
+}
+
+#right > div
+{
+    display: none;
+}
+
+#right > div[show]
+{
+    display: inline-block;
 }
 
 #thebar > li > .content 
@@ -63,6 +91,7 @@ body
 	height: 100%%; 
 	overflow-y: hidden;
 }
+
 #thebar > li:expanded > .content 
 {
 	visibility:visible;

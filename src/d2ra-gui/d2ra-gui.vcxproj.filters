@@ -96,6 +96,9 @@
     <ClCompile Include="..\..\include\htmlayout\behaviors\data_source_behavior.cpp">
       <Filter>_htmlayout</Filter>
     </ClCompile>
+    <ClCompile Include="behaviors\drag_window.cpp">
+      <Filter>behaviors</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="_htmlayout">
@@ -104,13 +107,16 @@
     <Filter Include="resources">
       <UniqueIdentifier>{c2ecd195-dfc5-4343-ac10-ba41d4088909}</UniqueIdentifier>
     </Filter>
+    <Filter Include="behaviors">
+      <UniqueIdentifier>{d4950a21-e4c7-4613-8c0a-c266fd002eaa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\html\index.html">
+    <CustomBuild Include="..\..\html\d2ra-gui.css">
       <Filter>resources</Filter>
-    </None>
-    <None Include="..\..\html\d2ra-gui.css">
+    </CustomBuild>
+    <CustomBuild Include="..\..\html\index.html">
       <Filter>resources</Filter>
-    </None>
+    </CustomBuild>
   </ItemGroup>
 </Project>
