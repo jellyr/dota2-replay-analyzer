@@ -1,7 +1,6 @@
 #pragma once
 
 #include "htmlayout.h"
-#include "HtmlEventHandler.h"
 
 #define WM_D2_SET_PROGRESS		( WM_APP + 0x100 )
 
@@ -19,6 +18,7 @@ private:
 
 public:
 	Window( );
+	~Window( );
 	void Show( const wchar_t* url );
 
 	HWND GetHwnd( );
@@ -48,4 +48,5 @@ private:
 
 private:
 	void OnClickedLoadDemo( );
+	void OnFinishedParsing( );
 };

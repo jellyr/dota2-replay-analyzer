@@ -96,25 +96,25 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="proto\ai_activity.proto">
+    <CustomBuild Include="..\..\proto\ai_activity.proto">
       <Filter>proto</Filter>
     </CustomBuild>
-    <CustomBuild Include="proto\demo.proto">
+    <CustomBuild Include="..\..\proto\demo.proto">
       <Filter>proto</Filter>
     </CustomBuild>
-    <CustomBuild Include="proto\dota_commonmessages.proto">
+    <CustomBuild Include="..\..\proto\dota_commonmessages.proto">
       <Filter>proto</Filter>
     </CustomBuild>
-    <CustomBuild Include="proto\dota_modifiers.proto">
+    <CustomBuild Include="..\..\proto\dota_modifiers.proto">
       <Filter>proto</Filter>
     </CustomBuild>
-    <CustomBuild Include="proto\dota_usermessages.proto">
+    <CustomBuild Include="..\..\proto\dota_usermessages.proto">
       <Filter>proto</Filter>
     </CustomBuild>
-    <CustomBuild Include="proto\netmessages.proto">
+    <CustomBuild Include="..\..\proto\netmessages.proto">
       <Filter>proto</Filter>
     </CustomBuild>
-    <CustomBuild Include="proto\usermessages.proto">
+    <CustomBuild Include="..\..\proto\usermessages.proto">
       <Filter>proto</Filter>
     </CustomBuild>
   </ItemGroup>

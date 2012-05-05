@@ -118,7 +118,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="proto\ai_activity.proto">
+    <CustomBuild Include="..\..\proto\ai_activity.proto">
       <FileType>Document</FileType>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">if not exist $(SolutionDir).generated mkdir $(SolutionDir).generated
 $(SolutionDir)bin\$(Configuration)\protoc.exe --proto_path=$(SolutionDir)include --proto_path=$(SolutionDir)proto --cpp_out=$(SolutionDir).generated "$(SolutionDir)proto\%(FileName)%(Extension)"</Command>
@@ -131,7 +131,7 @@ $(SolutionDir)bin\$(Configuration)\protoc.exe --proto_path=$(SolutionDir)include
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="proto\demo.proto">
+    <CustomBuild Include="..\..\proto\demo.proto">
       <FileType>Document</FileType>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">if not exist $(SolutionDir).generated mkdir $(SolutionDir).generated
 $(SolutionDir)bin\$(Configuration)\protoc.exe --proto_path=$(SolutionDir)include --proto_path=$(SolutionDir)proto --cpp_out=$(SolutionDir).generated "$(SolutionDir)proto\%(FileName)%(Extension)"</Command>
@@ -142,7 +142,7 @@ $(SolutionDir)bin\$(Configuration)\protoc.exe --proto_path=$(SolutionDir)include
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Running protobuf compiler on "$(SolutionDir)proto\%(FileName)%(Extension)"</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Running protobuf compiler on "$(SolutionDir)proto\%(FileName)%(Extension)"</Message>
     </CustomBuild>
-    <CustomBuild Include="proto\dota_commonmessages.proto">
+    <CustomBuild Include="..\..\proto\dota_commonmessages.proto">
       <FileType>Document</FileType>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">if not exist $(SolutionDir).generated mkdir $(SolutionDir).generated
 $(SolutionDir)bin\$(Configuration)\protoc.exe --proto_path=$(SolutionDir)include --proto_path=$(SolutionDir)proto --cpp_out=$(SolutionDir).generated "$(SolutionDir)proto\%(FileName)%(Extension)"</Command>
@@ -153,7 +153,7 @@ $(SolutionDir)bin\$(Configuration)\protoc.exe --proto_path=$(SolutionDir)include
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Running protobuf compiler on "$(SolutionDir)proto\%(FileName)%(Extension)"</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Running protobuf compiler on "$(SolutionDir)proto\%(FileName)%(Extension)"</Message>
     </CustomBuild>
-    <CustomBuild Include="proto\dota_modifiers.proto">
+    <CustomBuild Include="..\..\proto\dota_modifiers.proto">
       <FileType>Document</FileType>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">if not exist $(SolutionDir).generated mkdir $(SolutionDir).generated
 $(SolutionDir)bin\$(Configuration)\protoc.exe --proto_path=$(SolutionDir)include --proto_path=$(SolutionDir)proto --cpp_out=$(SolutionDir).generated "$(SolutionDir)proto\%(FileName)%(Extension)"</Command>
@@ -164,7 +164,7 @@ $(SolutionDir)bin\$(Configuration)\protoc.exe --proto_path=$(SolutionDir)include
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Running protobuf compiler on "$(SolutionDir)proto\%(FileName)%(Extension)"</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Running protobuf compiler on "$(SolutionDir)proto\%(FileName)%(Extension)"</Message>
     </CustomBuild>
-    <CustomBuild Include="proto\dota_usermessages.proto">
+    <CustomBuild Include="..\..\proto\dota_usermessages.proto">
       <FileType>Document</FileType>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">if not exist $(SolutionDir).generated mkdir $(SolutionDir).generated
 $(SolutionDir)bin\$(Configuration)\protoc.exe --proto_path=$(SolutionDir)include --proto_path=$(SolutionDir)proto --cpp_out=$(SolutionDir).generated "$(SolutionDir)proto\%(FileName)%(Extension)"</Command>
@@ -175,7 +175,7 @@ $(SolutionDir)bin\$(Configuration)\protoc.exe --proto_path=$(SolutionDir)include
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Running protobuf compiler on "$(SolutionDir)proto\%(FileName)%(Extension)"</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Running protobuf compiler on "$(SolutionDir)proto\%(FileName)%(Extension)"</Message>
     </CustomBuild>
-    <CustomBuild Include="proto\netmessages.proto">
+    <CustomBuild Include="..\..\proto\netmessages.proto">
       <FileType>Document</FileType>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">if not exist $(SolutionDir).generated mkdir $(SolutionDir).generated
 $(SolutionDir)bin\$(Configuration)\protoc.exe --proto_path=$(SolutionDir)include --proto_path=$(SolutionDir)proto --cpp_out=$(SolutionDir).generated "$(SolutionDir)proto\%(FileName)%(Extension)"</Command>
@@ -186,7 +186,7 @@ $(SolutionDir)bin\$(Configuration)\protoc.exe --proto_path=$(SolutionDir)include
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Running protobuf compiler on "$(SolutionDir)proto\%(FileName)%(Extension)"</Message>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Running protobuf compiler on "$(SolutionDir)proto\%(FileName)%(Extension)"</Message>
     </CustomBuild>
-    <CustomBuild Include="proto\usermessages.proto">
+    <CustomBuild Include="..\..\proto\usermessages.proto">
       <FileType>Document</FileType>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">if not exist $(SolutionDir).generated mkdir $(SolutionDir).generated
 $(SolutionDir)bin\$(Configuration)\protoc.exe --proto_path=$(SolutionDir)include --proto_path=$(SolutionDir)proto --cpp_out=$(SolutionDir).generated "$(SolutionDir)proto\%(FileName)%(Extension)"</Command>

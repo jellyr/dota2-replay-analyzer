@@ -30,8 +30,8 @@ private:
 	template <>
 	void HandleMessage<CDemoFileHeader_t>( bool compressed, int tick, int& size, int& uncompressedSize );
 
-	//template <>
-	//void PrintDemoMessage<CDemoStringTables_t>( bool compressed, int tick, int& size, int& uncompressedSize );
+	template <>
+	void HandleMessage<CDemoFileInfo_t>( bool compressed, int tick, int& size, int& uncompressedSize );
 
 private:
 	NewDemoFile _demofile;

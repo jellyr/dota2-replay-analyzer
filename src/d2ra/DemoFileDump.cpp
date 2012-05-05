@@ -9,6 +9,7 @@ NewDemoFileDump::NewDemoFileDump( )
 	, _previouspercent( -1 )
 	, _parsingthread( nullptr )
 {
+	ZeroMemory( &_generalInformation, sizeof( _generalInformation ) );
 }
 
 NewDemoFileDump::~NewDemoFileDump( )
@@ -150,84 +151,22 @@ void NewDemoFileDump::HandleMessage( bool compressed, int tick, int& size, int& 
 	//Msg.GetProtoMsg( ).PrintDebugString( );
 }
 
-//template <>
-//void NewDemoFileDump::HandleMessage<CDemoPacket_t>( bool compressed, int tick, int& size, int& uncompressedSize )
-//{
-//	CDemoPacket_t Msg;
-//	_demofile.ReadMessage( &Msg, compressed, &size, &uncompressedSize );
-//
-////	size_t index = 0;
-////
-////	while ( index < Msg.data( ).size( ) )
-////	{
-////		int Cmd = ReadInt( Msg.data( ), index );
-////		uint32 Size = ReadInt( Msg.data( ), index );
-////
-////		std::string strName;
-////		if( NET_Messages_IsValid( Cmd ) )
-////		{
-////			strName = NET_Messages_Name( ( NET_Messages ) Cmd );
-////		}
-////		else if( SVC_Messages_IsValid( Cmd ) )
-////		{
-////			strName = SVC_Messages_Name( ( SVC_Messages ) Cmd );
-////		}
-////
-////		if ( index + Size > Msg.data( ).size( ) )
-////		{
-////			// ???
-////		}
-////
-//////		switch( Cmd )
-//////		{
-//////#define HANDLE_NetMsg( _x )		case net_ ## _x: PrintNetMessage< CNETMsg_ ## _x, net_ ## _x >( *this, &buf[ index ], Size ); break
-//////#define HANDLE_SvcMsg( _x )		case svc_ ## _x: PrintNetMessage< CSVCMsg_ ## _x, svc_ ## _x >( *this, &buf[ index ], Size ); break
-//////
-//////		default:
-//////			printf( "WARNING. DumpUserMessage(): Unknown netmessage %d.\n", Cmd );
-//////			break;
-//////
-//////		HANDLE_NetMsg( NOP );            	// 0
-//////		HANDLE_NetMsg( Disconnect );        // 1
-//////		HANDLE_NetMsg( File );              // 2
-//////		HANDLE_NetMsg( SplitScreenUser );   // 3
-//////		HANDLE_NetMsg( Tick );              // 4
-//////		HANDLE_NetMsg( StringCmd );         // 5
-//////		HANDLE_NetMsg( SetConVar );         // 6
-//////		HANDLE_NetMsg( SignonState );       // 7
-//////		HANDLE_SvcMsg( ServerInfo );        // 8
-//////		HANDLE_SvcMsg( SendTable );         // 9
-//////		HANDLE_SvcMsg( ClassInfo );         // 10
-//////		HANDLE_SvcMsg( SetPause );          // 11
-//////		HANDLE_SvcMsg( CreateStringTable ); // 12
-//////		HANDLE_SvcMsg( UpdateStringTable ); // 13
-//////		HANDLE_SvcMsg( VoiceInit );         // 14
-//////		HANDLE_SvcMsg( VoiceData );         // 15
-//////		HANDLE_SvcMsg( Print );             // 16
-//////		HANDLE_SvcMsg( Sounds );            // 17
-//////		HANDLE_SvcMsg( SetView );           // 18
-//////		HANDLE_SvcMsg( FixAngle );          // 19
-//////		HANDLE_SvcMsg( CrosshairAngle );    // 20
-//////		HANDLE_SvcMsg( BSPDecal );          // 21
-//////		HANDLE_SvcMsg( SplitScreen );       // 22
-//////		HANDLE_SvcMsg( UserMessage );       // 23
-//////		//$ HANDLE_SvcMsg( EntityMessage ); // 24
-//////		HANDLE_SvcMsg( GameEvent );         // 25
-//////		HANDLE_SvcMsg( PacketEntities );    // 26
-//////		HANDLE_SvcMsg( TempEntities );      // 27
-//////		HANDLE_SvcMsg( Prefetch );          // 28
-//////		HANDLE_SvcMsg( Menu );              // 29
-//////		HANDLE_SvcMsg( GameEventList );     // 30
-//////		HANDLE_SvcMsg( GetCvarValue );      // 31
-//////
-//////#undef HANDLE_SvcMsg
-//////#undef HANDLE_NetMsg
-//////		}
-////
-////		index += Size;
-////	}
-//}
-//
+static const char* STRING_TABLE_GAME_MODE[] =
+{
+	"",
+	"All Pick",
+	"All Random",
+	"Random Draft",
+	"Single Draft"
+};
+
+static const char* STRING_TABLE_GAME_WINNER[] =
+{
+	"",
+	"",
+	"Radiant",
+	"Dire"
+};
 
 template <>
 void NewDemoFileDump::HandleMessage<CDemoFileHeader_t>( bool compressed, int tick, int& size, int& uncompressedSize )
@@ -238,6 +177,24 @@ void NewDemoFileDump::HandleMessage<CDemoFileHeader_t>( bool compressed, int tic
 	strcpy_s( _generalInformation.serverName, Msg.server_name( ).c_str( ) );
 	_generalInformation.networkProtocol = Msg.network_protocol( );
 	_generalInformation.allowClientsideEntities = Msg.allow_clientside_entities( );
+}
+
+template <>
+void NewDemoFileDump::HandleMessage<CDemoFileInfo_t>( bool compressed, int tick, int& size, int& uncompressedSize )
+{
+	CDemoFileInfo_t Msg;
+	_demofile.ReadMessage( &Msg, compressed, &size, &uncompressedSize );
+
+	_generalInformation.matchId = Msg.game_info( ).dota( ).match_id( );
+	_generalInformation.winner = Msg.game_info( ).dota( ).game_winner( );
+	_generalInformation.mode = Msg.game_info( ).dota( ).game_mode( );
+	_generalInformation.duration = Msg.playback_time( );
+
+	strcpy_s( _generalInformation.winnerString, STRING_TABLE_GAME_WINNER[_generalInformation.winner] );
+	strcpy_s( _generalInformation.modeString, STRING_TABLE_GAME_MODE[_generalInformation.mode] );
+
+	std::string str = Msg.GetProtoMsg( ).DebugString( );
+	OutputDebugStringA( str.c_str( ) );
 }
 
 void NewDemoFileDump::SetProgressCallback( PROGRESS_CALLBACK callback, void* context )

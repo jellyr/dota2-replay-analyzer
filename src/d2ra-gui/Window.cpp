@@ -1,6 +1,7 @@
 #include "Window.h"
 #include <Shlwapi.h>
 #include <CommDlg.h>
+#include <sstream>
 
 using namespace htmlayout;
 
@@ -10,6 +11,12 @@ Window::Window( )
 	, _root( nullptr )
 {
 	_classname = _wcsdup( L"dota2.replay.analyzer" );
+}
+
+Window::~Window( )
+{
+	free( _classname );
+	D2Close( );
 }
 
 bool Window::Register( )
@@ -286,12 +293,9 @@ void Window::OnClickedLoadDemo( )
 		MessageBox( _hwnd, L"Cannot open that file.", L"Dota 2", MB_ICONERROR|MB_OK );
 	}
 
-	if ( MessageBox( _hwnd, L"Do you want to begin parsing the file?", L"Dota 2", MB_ICONQUESTION|MB_OKCANCEL ) == IDOK )
-	{
-		D2SetProgressCallback( ProgressCallback, this );
-		D2Parse( );
-	}
-
+	D2SetProgressCallback( ProgressCallback, this );
+	D2Parse( );
+	
 	return;
 }
 
@@ -310,7 +314,62 @@ void Window::SetProgress( int percent )
 		dom::element overlay = Root( )->find_first( "form.light-box-dialog" );
 		overlay.xcall( "hide" );
 
-		D2GENERAL_INFORMATION generalInfo;
-		D2GetGeneralInformation( &generalInfo );
+		OnFinishedParsing( );
+	}
+}
+
+template <typename T>
+std::wstring ToWchar( const T& val )
+{
+	std::wstringstream str;
+	str << val;
+
+	return str.str( );
+}
+
+template <typename T>
+std::string ToChar( const T& val )
+{
+	std::stringstream str;
+	str << val;
+
+	return str.str( );
+}
+
+void Window::OnFinishedParsing( )
+{
+	D2GENERAL_INFORMATION generalInfo;
+	D2GetGeneralInformation( &generalInfo );
+
+	dom::element elem;
+	
+	{
+		elem = Root( )->find_first( "#general-matchid" );
+		elem.set_text( ToWchar( generalInfo.matchId ).c_str( ) );
+	}
+
+	{
+		elem = Root( )->find_first( "#general-servername" );
+		elem.set_text( ToWchar( generalInfo.serverName ).c_str( ) );
+	}
+
+	{
+		elem = Root( )->find_first( "#general-protocol-version" );
+		elem.set_text( ToWchar( generalInfo.networkProtocol ).c_str( ) );
+	}
+
+	{
+		elem = Root( )->find_first( "#general-winner" );
+		elem.set_text( ToWchar( generalInfo.winnerString ).c_str( ) );
+	}
+
+	{
+		elem = Root( )->find_first( "#general-mode" );
+		elem.set_text( ToWchar( generalInfo.modeString ).c_str( ) );
+	}
+
+	{
+		elem = Root( )->find_first( "#general-duration" );
+		elem.set_text( ToWchar( generalInfo.duration ).c_str( ) );
 	}
 }
