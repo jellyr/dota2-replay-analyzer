@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<ItemDefinitionGroup>
+		<ClCompile>
+			<AdditionalIncludeDirectories>
+$(SolutionDir)include;
+$(SolutionDir).generated;
+			</AdditionalIncludeDirectories>
+		</ClCompile>
+		<Link>
+			<AdditionalLibraryDirectories>
+$(SolutionDir)lib\$(Configuration)
+			</AdditionalLibraryDirectories>
+		</Link>
+	</ItemDefinitionGroup>
+
+	<PropertyGroup Label="UserMacros">
+		<Bin>$(SolutionDir)bin\$(Configuration)\</Bin>
+		<Lib>$(SolutionDir)lib\$(Configuration)\</Lib>
+		<Build>$(SolutionDir).build\$(Configuration)\$(ProjectFileName)\</Build>
+		<AdditionalIncludeDirectories>
+$(SolutionDir)include;
+$(SolutionDir).generated;
+		</AdditionalIncludeDirectories>
+	</PropertyGroup>
+</Project>

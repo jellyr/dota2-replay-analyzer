@@ -1,0 +1,69 @@
+body
+{
+	font-family: "Tahoma";
+	font-size: 10pt; 
+	padding: 10px;
+	background-color: #e9e8f3;
+	width: 1000px;
+	height: 600px;
+	margin: 0;
+	padding: 10px;
+	border: 1px solid red;
+}
+
+#thebar 
+{
+	overflow: auto;
+	height: 100%%;
+	width: 200px;
+	margin: 0;
+	padding: 0;
+	border: 1px solid #bdbccc;
+	overflow: auto;
+	behavior: expandable-list;
+	overflow-y: hidden;
+	background-color: #fff #e9e8f3 #e9e8f3 #fff;
+}
+
+#thebar > li 
+{
+	color: black;
+	transition: slide;
+}
+
+#thebar > li > .caption
+{
+	font-weight: bold;
+	color: white;
+	padding: 6px;
+	margin: -1px;
+	padding-left: 10px;
+	background-image: url( images/tab.png );
+	background-repeat: expand stretch-left stretch-right stretch-middle;
+	background-position: 3px 3px 3px 3px;
+	margin: 0;
+} 
+
+#thebar > li > .caption:hover
+{
+	color: #ffe598;
+	transition: blend;
+	background-image: url( images/tab-hover.png );
+}
+
+#thebar > li:expanded
+{
+	height: 100%%;
+}
+
+#thebar > li > .content 
+{
+	visibility: collapse;
+	padding: 4px;
+	height: 100%%; 
+	overflow-y: hidden;
+}
+#thebar > li:expanded > .content 
+{
+	visibility:visible;
+}

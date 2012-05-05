@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="proto">
+      <UniqueIdentifier>{663f1941-cb33-4b8d-880c-96d06531dc85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="proto\.generated">
+      <UniqueIdentifier>{a6520752-2a94-45ae-be3e-1dd045cce72e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="sources">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="exports">
+      <UniqueIdentifier>{3ffc0d5b-9a89-4b13-bde5-67e02620c0db}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\d2ra\exports.h">
+      <Filter>exports</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\d2ra\common.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\d2ra\DemoFile.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\d2ra\DemoFileDump.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\.generated\ai_activity.pb.h">
+      <Filter>proto\.generated</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\.generated\demo.pb.h">
+      <Filter>proto\.generated</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\.generated\dota_commonmessages.pb.h">
+      <Filter>proto\.generated</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\.generated\dota_modifiers.pb.h">
+      <Filter>proto\.generated</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\.generated\dota_usermessages.pb.h">
+      <Filter>proto\.generated</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\.generated\netmessages.pb.h">
+      <Filter>proto\.generated</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\.generated\usermessages.pb.h">
+      <Filter>proto\.generated</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="exports.cpp">
+      <Filter>exports</Filter>
+    </ClCompile>
+    <ClCompile Include="common.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoFile.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoFileDump.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\.generated\ai_activity.pb.cc">
+      <Filter>proto\.generated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\.generated\demo.pb.cc">
+      <Filter>proto\.generated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\.generated\dota_commonmessages.pb.cc">
+      <Filter>proto\.generated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\.generated\dota_modifiers.pb.cc">
+      <Filter>proto\.generated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\.generated\dota_usermessages.pb.cc">
+      <Filter>proto\.generated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\.generated\netmessages.pb.cc">
+      <Filter>proto\.generated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\.generated\usermessages.pb.cc">
+      <Filter>proto\.generated</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="proto\ai_activity.proto">
+      <Filter>proto</Filter>
+    </CustomBuild>
+    <CustomBuild Include="proto\demo.proto">
+      <Filter>proto</Filter>
+    </CustomBuild>
+    <CustomBuild Include="proto\dota_commonmessages.proto">
+      <Filter>proto</Filter>
+    </CustomBuild>
+    <CustomBuild Include="proto\dota_modifiers.proto">
+      <Filter>proto</Filter>
+    </CustomBuild>
+    <CustomBuild Include="proto\dota_usermessages.proto">
+      <Filter>proto</Filter>
+    </CustomBuild>
+    <CustomBuild Include="proto\netmessages.proto">
+      <Filter>proto</Filter>
+    </CustomBuild>
+    <CustomBuild Include="proto\usermessages.proto">
+      <Filter>proto</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

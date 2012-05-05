@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="..\..\include\d2ra-gui\Window.h" />
+    <ClInclude Include="..\..\include\htmlayout\behaviors\behavior_aux.h">
+      <Filter>_htmlayout</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\htmlayout\behaviors\notifications.h">
+      <Filter>_htmlayout</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_accesskeys.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_actions.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_chart.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_clock.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_clock_graphin.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_collapsible_by_icon.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_command.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_editable_select.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_expandable_list.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_font_size.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_form.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_grid.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_gripper.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_hover.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_hyperlink.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_lb_dialog.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_path.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_popup.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_rtc_current_objects.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_scroller.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_select_buddy.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_select_checkmark.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_shellicon.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_sizer.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_splitter.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_tabs.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\behavior_virtual_grid.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\htmlayout\behaviors\data_source_behavior.cpp">
+      <Filter>_htmlayout</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="_htmlayout">
+      <UniqueIdentifier>{81aae9e6-6387-454b-9c69-5792e149655d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resources">
+      <UniqueIdentifier>{c2ecd195-dfc5-4343-ac10-ba41d4088909}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\html\index.html">
+      <Filter>resources</Filter>
+    </None>
+    <None Include="..\..\html\d2ra-gui.css">
+      <Filter>resources</Filter>
+    </None>
+  </ItemGroup>
+</Project>

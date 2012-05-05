@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "d2ra", "src\d2ra\d2ra.vcxproj", "{02287658-3591-4201-ADD4-A85369F18ADA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "d2ra-gui", "src\d2ra-gui\d2ra-gui.vcxproj", "{6E49D74C-0D0F-476D-A60F-FCF64D2A929B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02287658-3591-4201-ADD4-A85369F18ADA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{02287658-3591-4201-ADD4-A85369F18ADA}.Debug|Win32.Build.0 = Debug|Win32
+		{02287658-3591-4201-ADD4-A85369F18ADA}.Release|Win32.ActiveCfg = Release|Win32
+		{02287658-3591-4201-ADD4-A85369F18ADA}.Release|Win32.Build.0 = Release|Win32
+		{6E49D74C-0D0F-476D-A60F-FCF64D2A929B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6E49D74C-0D0F-476D-A60F-FCF64D2A929B}.Debug|Win32.Build.0 = Debug|Win32
+		{6E49D74C-0D0F-476D-A60F-FCF64D2A929B}.Release|Win32.ActiveCfg = Release|Win32
+		{6E49D74C-0D0F-476D-A60F-FCF64D2A929B}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
