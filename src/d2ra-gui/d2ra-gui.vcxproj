@@ -51,24 +51,24 @@
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\html\d2ra-gui.css">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">if not exist $(SolutionDir)bin\$(Configuration)\html mkdir $(SolutionDir)bin\$(Configuration)\html
-xcopy /C /F /R /Y /E /D $(SolutionDir)html\* $(SolutionDir)bin\$(Configuration)\html
-</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)bin\$(Configuration)\html\%(FileName).%(Extension)</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">if not exist $(SolutionDir)bin\$(Configuration)\html mkdir $(SolutionDir)bin\$(Configuration)\html
-xcopy /C /F /R /Y /E /D $(SolutionDir)html\* $(SolutionDir)bin\$(Configuration)\html
-</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)bin\$(Configuration)\html\%(FileName).%(Extension)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">if not exist "$(SolutionDir)bin\$(Configuration)\html" mkdir "$(SolutionDir)bin\$(Configuration)\html"
+xcopy /C /F /R /Y /E /D "$(SolutionDir)html\*" "$(SolutionDir)bin\$(Configuration)\html"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)bin\$(Configuration)\html\%(FileName)%(Extension)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">if not exist "$(SolutionDir)bin\$(Configuration)\html" mkdir "$(SolutionDir)bin\$(Configuration)\html"
+xcopy /C /F /R /Y /E /D "$(SolutionDir)html\*" "$(SolutionDir)bin\$(Configuration)\html"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)bin\$(Configuration)\html\%(FileName)%(Extension)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Copying %(FileName)%(Extension) (if modified)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Copying %(FileName)%(Extension) (if modified)</Message>
     </CustomBuild>
     <CustomBuild Include="..\..\html\index.html">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">if not exist $(SolutionDir)bin\$(Configuration)\html mkdir $(SolutionDir)bin\$(Configuration)\html
-xcopy /C /F /R /Y /E /D $(SolutionDir)html\* $(SolutionDir)bin\$(Configuration)\html
-</Command>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">if not exist $(SolutionDir)bin\$(Configuration)\html mkdir $(SolutionDir)bin\$(Configuration)\html
-xcopy /C /F /R /Y /E /D $(SolutionDir)html\* $(SolutionDir)bin\$(Configuration)\html
-</Command>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)bin\$(Configuration)\html\%(FileName).%(Extension)</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)bin\$(Configuration)\html\%(FileName).%(Extension)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">if not exist "$(SolutionDir)bin\$(Configuration)\html" mkdir "$(SolutionDir)bin\$(Configuration)\html"
+xcopy /C /F /R /Y /E /D "$(SolutionDir)html\*" "$(SolutionDir)bin\$(Configuration)\html"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">if not exist "$(SolutionDir)bin\$(Configuration)\html" mkdir "$(SolutionDir)bin\$(Configuration)\html"
+xcopy /C /F /R /Y /E /D "$(SolutionDir)html\*" "$(SolutionDir)bin\$(Configuration)\html"</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)bin\$(Configuration)\html\%(FileName)%(Extension)</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)bin\$(Configuration)\html\%(FileName)%(Extension)</Outputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Copying %(FileName)%(Extension) (if modified)</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Copying %(FileName)%(Extension) (if modified)</Message>
     </CustomBuild>
   </ItemGroup>
   <PropertyGroup Label="Globals">
