@@ -27,6 +27,9 @@ private:
 	template <class DEMCLASS>
 	void HandleMessage( bool compressed, int tick, int& size, int& uncompressedSize );
 
+	template <class DEMCLASS>
+	void SkipMessage( bool compressed, int tick, int& size, int& uncompressedSize );
+
 	template <>
 	void HandleMessage<CDemoFileHeader_t>( bool compressed, int tick, int& size, int& uncompressedSize );
 

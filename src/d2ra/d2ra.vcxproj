@@ -106,6 +106,7 @@
     <ClInclude Include="..\..\include\d2ra\DemoFileDump.h" />
     <ClInclude Include="..\..\include\d2ra\exports.h" />
     <ClInclude Include="..\..\include\d2ra\export_types.h" />
+    <ClInclude Include="..\..\include\d2ra\StatsD2Comm.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\.generated\ai_activity.pb.cc" />
@@ -120,6 +121,7 @@
     <ClCompile Include="DemoFileDump.cpp" />
     <ClCompile Include="exports.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="StatsD2Comm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\proto\ai_activity.proto">

@@ -86,7 +86,7 @@ bool Window::Create( )
 		WS_EX_APPWINDOW,
 		_classname,
 		nullptr,
-		WS_POPUP | WS_CLIPSIBLINGS | WS_CLIPCHILDREN,
+		WS_POPUP | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX,
 		0,
 		0,
 		0,
@@ -102,6 +102,7 @@ bool Window::Create( )
 		return false;
 	}
 
+	SetWindowText( _hwnd, L"Dota 2 Replay Analyzer" );
 	SetWindowLongPtr( _hwnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>( this ) );
 
 	return true;
@@ -150,8 +151,8 @@ void Window::Show( const wchar_t* url )
 
 void Window::Resize( )
 {
-	UINT w = HTMLayoutGetMinWidth( _hwnd );
-	UINT h = HTMLayoutGetMinHeight( _hwnd, w );
+	UINT w = HTMLayoutGetMinWidth( _hwnd ) + 6;
+	UINT h = HTMLayoutGetMinHeight( _hwnd, w ) + 28;
 	
 	SetWindowPos( _hwnd, nullptr, 0, 0, w, h, SWP_NOREDRAW | SWP_NOREPOSITION | SWP_NOMOVE | SWP_NOSENDCHANGING );
 }
@@ -296,7 +297,9 @@ void Window::OnClickedLoadDemo( )
 	dom::element selected = Root( )->find_first( "#chosen-file-name" );
 	selected.set_text( selectedFile );
 
-	D2SetProgressCallback( ProgressCallback, this );
+	_startedparsing = GetTickCount64( );
+
+	D2SetParseProgressCallback( ProgressCallback, this );
 	D2Parse( );
 	
 	return;
@@ -341,6 +344,10 @@ std::string ToChar( const T& val )
 
 void Window::OnFinishedParsing( )
 {
+	ULONGLONG endedParsing = GetTickCount64( );
+
+	ULONGLONG diff = endedParsing - _startedparsing;
+
 	D2GENERAL_INFORMATION generalInfo;
 	D2GetGeneralInformation( &generalInfo );
 

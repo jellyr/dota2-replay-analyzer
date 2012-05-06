@@ -15,6 +15,7 @@ private:
 	HWND _hwnd;
 	wchar_t *_classname;
 	htmlayout::dom::root_element *_root;
+	ULONGLONG _startedparsing;
 
 public:
 	Window( );

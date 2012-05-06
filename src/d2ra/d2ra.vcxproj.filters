@@ -56,6 +56,9 @@
     <ClInclude Include="..\..\include\d2ra\export_types.h">
       <Filter>exports</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\include\d2ra\StatsD2Comm.h">
+      <Filter>headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="exports.cpp">
@@ -93,6 +96,9 @@
     </ClCompile>
     <ClCompile Include="..\..\.generated\usermessages.pb.cc">
       <Filter>proto\.generated</Filter>
+    </ClCompile>
+    <ClCompile Include="StatsD2Comm.cpp">
+      <Filter>sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

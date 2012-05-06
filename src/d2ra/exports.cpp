@@ -1,7 +1,9 @@
 #include "exports.h"
 #include "DemoFileDump.h"
+#include "StatsD2Comm.h"
 
 NewDemoFileDump fileDump;
+StatsD2Comm statsDota2Comm;
 
 bool D2Open( const wchar_t* fileName )
 {
@@ -18,14 +20,13 @@ void D2Close( )
 	fileDump.Close( );
 }
 
-void D2SetProgressCallback( D2RA_PROGRESS_CALLBACK callback, void* context )
+void D2SetParseProgressCallback( D2RA_PROGRESS_CALLBACK callback, void* context )
 {
 	fileDump.SetProgressCallback( callback, context );
 }
 
 void D2SetStoppedCallback( D2RA_STOPPED_CALLBACK callback, void* context )
 {
-	// TODO
 }
 
 void D2RA_API D2GetGeneralInformation( PD2GENERAL_INFORMATION generalInfo )
@@ -36,4 +37,14 @@ void D2RA_API D2GetGeneralInformation( PD2GENERAL_INFORMATION generalInfo )
 void D2RA_API D2GetPlayerInformation( PD2PLAYER_INFORMATION playerInfo )
 {
 	fileDump.GetPlayerInformation( playerInfo );
+}
+
+void D2DownloadReplay( long matchId )
+{
+	statsDota2Comm.DownloadReplay( matchId );
+}
+
+void D2SetDownloadProgressCallback( D2RA_PROGRESS_CALLBACK callback, void* context )
+{
+	statsDota2Comm.SetProgressCallback( callback, context );
 }
