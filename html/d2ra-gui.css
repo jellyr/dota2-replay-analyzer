@@ -28,7 +28,7 @@ body
 	padding: 0;
 	border: 1px solid #bdbccc;
 	overflow: auto;
-	behavior: expandable-list;
+	behavior: expandable-list collapsible-list;
 	overflow-y: hidden;
 	background-color: #fff #e9e8f3 #e9e8f3 #fff;
 }

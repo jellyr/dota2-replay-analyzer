@@ -11,7 +11,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\d2ra-gui\HtmlEventHandler.h" />
     <ClInclude Include="..\..\include\d2ra-gui\Window.h" />
     <ClInclude Include="..\..\include\htmlayout\behaviors\behavior_aux.h" />
     <ClInclude Include="..\..\include\htmlayout\behaviors\notifications.h" />
