@@ -157,23 +157,6 @@ void NewDemoFileDump::HandleMessage( bool compressed, int tick, int& size, int& 
 	//Msg.GetProtoMsg( ).PrintDebugString( );
 }
 
-static const char* STRING_TABLE_GAME_MODE[] =
-{
-	"",
-	"All Pick",
-	"All Random",
-	"Random Draft",
-	"Single Draft"
-};
-
-static const char* STRING_TABLE_GAME_WINNER[] =
-{
-	"",
-	"",
-	"Radiant",
-	"Dire"
-};
-
 template <>
 void NewDemoFileDump::HandleMessage<CDemoFileHeader_t>( bool compressed, int tick, int& size, int& uncompressedSize )
 {
@@ -188,6 +171,24 @@ void NewDemoFileDump::HandleMessage<CDemoFileHeader_t>( bool compressed, int tic
 template <>
 void NewDemoFileDump::HandleMessage<CDemoFileInfo_t>( bool compressed, int tick, int& size, int& uncompressedSize )
 {
+	static const char* STRING_TABLE_GAME_MODE[] =
+	{
+		"",				// 0
+		"All Pick",		// 1
+		"All Random",	// 2
+		"Random Draft",	// 3
+		"Single Draft"	// 4
+	};
+
+	static const char* STRING_TABLE_GAME_WINNER[] =
+	{
+		"",				// 0
+		"",				// 1
+		"Radiant",		// 2
+		"Dire"			// 3
+	};
+
+
 	CDemoFileInfo_t Msg;
 	_demofile.ReadMessage( &Msg, compressed, &size, &uncompressedSize );
 

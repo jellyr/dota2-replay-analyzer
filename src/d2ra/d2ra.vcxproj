@@ -55,8 +55,8 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;D2RA_DLL;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)include\d2ra;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;D2RA_DLL;CURL_STATICLIB;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\d2ra;$(SolutionDir)include\curl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <UseFullPaths>true</UseFullPaths>
       <TreatWarningAsError>true</TreatWarningAsError>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -64,7 +64,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>libprotobuf_s.lib;snappy_static_s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libprotobuf_s.lib;snappy_static_s.lib;libcurl_a_debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(Lib)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>msvcprtd.lib;msvcrtd.lib</IgnoreSpecificDefaultLibraries>
     </Link>
@@ -77,8 +77,8 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;D2RA_DLL;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)include\d2ra;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;D2RA_DLL;CURL_STATICLIB;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\d2ra;$(SolutionDir)include\curl;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <UseFullPaths>true</UseFullPaths>
       <TreatWarningAsError>true</TreatWarningAsError>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -88,7 +88,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>libprotobuf_s.lib;snappy_static_s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libprotobuf_s.lib;snappy_static_s.lib;libcurl_a.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(Lib)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>msvcprt.lib;msvcrt.lib</IgnoreSpecificDefaultLibraries>
     </Link>

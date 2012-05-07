@@ -11,6 +11,9 @@ Window::Window( )
 	, _root( nullptr )
 {
 	_classname = _wcsdup( L"dota2.replay.analyzer" );
+
+	D2STATS_REPLAY_INFORMATION replayInformation;
+	D2StatsGetReplayInformation( 12288739, &replayInformation );
 }
 
 Window::~Window( )

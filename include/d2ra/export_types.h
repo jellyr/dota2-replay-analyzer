@@ -35,7 +35,6 @@ typedef struct
 	float duration;								// how long it takes, in seconds
 } D2GENERAL_INFORMATION, *PD2GENERAL_INFORMATION;
 
-
 typedef struct
 {
 	char name[MAX_PLAYER_NAME_LENGTH];			// "Lamza"
@@ -46,6 +45,22 @@ typedef struct
 {
 	__PLAYER_INFORMATION players[10];				// 10 players
 } D2PLAYER_INFORMATION, *PD2PLAYER_INFORMATION;
+
+typedef struct
+{
+	char name[MAX_PLAYER_NAME_LENGTH];
+	char hero[MAX_HERO_NAME_LENGTH];
+	int level;
+	int kills;
+	int deaths;
+	int assists;
+} __D2STATS_PLAYER_INFORMATION, *__PD2STATS_PLAYER_INFORMATION;
+
+typedef struct
+{
+	int matchId;
+	__D2STATS_PLAYER_INFORMATION players[10];
+} D2STATS_REPLAY_INFORMATION, *PD2STATS_REPLAY_INFORMATION;
 
 #ifdef __cplusplus
 }

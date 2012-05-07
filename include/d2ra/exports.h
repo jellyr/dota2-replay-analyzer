@@ -30,8 +30,11 @@ void D2RA_API D2Parse( );
 // Close the handle; this also stops the parsing if it's already started
 void D2RA_API D2Close( );
 
+// Get replay information
+void D2RA_API D2StatsGetReplayInformation( long matchId, PD2STATS_REPLAY_INFORMATION replayInformation );
+
 // Download a replay
-void D2RA_API D2DownloadReplay( long matchId );
+void D2RA_API D2StatsDownloadReplay( long matchId );
 
 // Set a custom callback for file parsing progress
 void D2RA_API D2SetDownloadProgressCallback( D2RA_PROGRESS_CALLBACK callback, void* context );
